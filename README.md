@@ -70,7 +70,6 @@ cd treestimator
 
 *Comprehensive results table showing year-by-year projections*
 
-
 ## 👩‍💻 Note to Users
 
 This tool was developed to provide a practical tool for restoration (agroforestry and forestry) professionals to better plan and manage their tree-based restoration initiatives. This tool is provided for estimation purposes only. The developer is not liable for any damages resulting from its use. Always consult with a qualified professional for critical decisions.
