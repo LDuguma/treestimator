@@ -55,7 +55,7 @@ cd treestimator
 **Lalisa Duguma, PhD**  
 Global Evergreening Alliance (GEA)
 
-This project was developed to provide a practical tool for environmental and forestry professionals to better plan and manage their tree-based restoration initiatives.
+This tool was developed to provide a practical tool for environmental and forestry professionals to better plan and manage their tree-based restoration initiatives.
 
 ## 📜 License
 
