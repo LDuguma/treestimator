@@ -4,7 +4,7 @@ Treestimator is a web-based simulation tool designed to help project leaders and
 
 ## 🚀 Key Features
 
-![Treestimator Interface](./interface-overview.png)
+![Treestimator Interface](./images/interface-overview.png)
 
 *Main interface showing input parameters and simulation controls*
 
@@ -15,7 +15,7 @@ Treestimator is a web-based simulation tool designed to help project leaders and
 * **Detailed Reporting:** Get a comprehensive year-by-year table of your simulation results and a summary of key metrics.
 * **PDF Export:** Easily generate and download a professional PDF summary of your simulation for reporting and sharing.
 
-![Sample Report](./sample-report.png)
+![Sample Report](./images/sample-report.png)
 
 *Example of generated PDF report with detailed analysis*
 
@@ -61,12 +61,12 @@ cd treestimator
 ## 📸 Screenshots
 
 ### Input Interface
-![Input Interface](./input-interface.png)
+![Input Interface](./images/input-interface.png)
 
 *User-friendly input forms for project parameters*
 
 ### Simulation Results
-![Simulation Results](./simulation-results.png)
+![Simulation Results](./images/simulation-results.png)
 
 *Comprehensive results table showing year-by-year projections*
 
