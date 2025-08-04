@@ -4,12 +4,18 @@ Treestimator is a web-based simulation tool designed to help project leaders and
 
 ## 🚀 Key Features
 
+![Treestimator Interface](./images/interface-overview.png)
+*Main interface showing input parameters and simulation controls*
+
 * **Interactive Simulation:** Enter your project details, planting schedule, and survival rates to generate a dynamic projection of your tree population.
 * **Cohort-Based Modeling:** The tool tracks each year's plantings as separate cohorts, providing a detailed view of how different planting groups perform over their lifecycle.
 * **Flexible Inputs:** Customize key parameters such as planting schedules, age-based survival rates, beating-up strategies, and thinning regimes.
 * **Visual Data Analysis:** Understand your project's trajectory at a glance with interactive charts for total live trees and cohort survival.
 * **Detailed Reporting:** Get a comprehensive year-by-year table of your simulation results and a summary of key metrics.
 * **PDF Export:** Easily generate and download a professional PDF summary of your simulation for reporting and sharing.
+
+![Sample Report](./images/sample-report.png)
+*Example of generated PDF report with detailed analysis*
 
 ## 🛠️ How It Works
 
@@ -50,12 +56,30 @@ cd treestimator
 # (You can just double-click the file)
 ```
 
+## 📸 Screenshots
+
+### Input Interface
+![Input Interface](./images/input-interface.png)
+*User-friendly input forms for project parameters*
+
+### Simulation Results
+![Simulation Results](./images/simulation-results.png)
+*Comprehensive results table showing year-by-year projections*
+
+### Interactive Charts
+<div align="center">
+  <img src="./images/chart-population.png" alt="Population Chart" width="45%">
+  <img src="./images/chart-cohorts.png" alt="Cohort Chart" width="45%">
+</div>
+
+*Left: Total tree population over time | Right: Individual cohort tracking*
+
 ## 👩‍💻 Developed By
 
 **Lalisa Duguma, PhD**  
 Global Evergreening Alliance (GEA)
 
-This tool was developed to provide a practical tool for environmental and forestry professionals to better plan and manage their tree-based restoration initiatives.
+This project was developed to provide a practical tool for environmental and forestry professionals to better plan and manage their tree-based restoration initiatives.
 
 ## 📜 License
 
