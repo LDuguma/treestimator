@@ -4,7 +4,7 @@ Treestimator is a web-based simulation tool designed to help project leaders and
 
 ## 🚀 Key Features
 
-![Treestimator Interface](./images/interface-overview.png)
+![Treestimator Interface](./interface-overview.png)
 *Main interface showing input parameters and simulation controls*
 
 * **Interactive Simulation:** Enter your project details, planting schedule, and survival rates to generate a dynamic projection of your tree population.
@@ -14,7 +14,7 @@ Treestimator is a web-based simulation tool designed to help project leaders and
 * **Detailed Reporting:** Get a comprehensive year-by-year table of your simulation results and a summary of key metrics.
 * **PDF Export:** Easily generate and download a professional PDF summary of your simulation for reporting and sharing.
 
-![Sample Report](./images/sample-report.png)
+![Sample Report](./sample-report.png)
 *Example of generated PDF report with detailed analysis*
 
 ## 🛠️ How It Works
@@ -59,11 +59,11 @@ cd treestimator
 ## 📸 Screenshots
 
 ### Input Interface
-![Input Interface](./images/input-interface.png)
+![Input Interface](./input-interface.png)
 *User-friendly input forms for project parameters*
 
 ### Simulation Results
-![Simulation Results](./images/simulation-results.png)
+![Simulation Results](./simulation-results.png)
 *Comprehensive results table showing year-by-year projections*
 
 ### Interactive Charts
