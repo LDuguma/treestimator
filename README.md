@@ -54,7 +54,7 @@ git clone https://github.com/LDuguma/treestimator.git
 # Navigate to the project directory
 cd treestimator
 
-# Open index.html in your browser
+# Open the html in your browser
 # (You can just double-click the file)
 ```
 
