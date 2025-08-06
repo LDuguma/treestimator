@@ -561,11 +561,11 @@
                 <h3>Project Details</h3>
                 <div class="input-row">
                     <label for="userName">Project Leader:</label>
-                    <input type="text" id="userName" value="Karanja C.">
+                    <input type="text" id="userName" value="Lalisa D.">
                 </div>
                 <div class="input-row">
                     <label for="projectLocation">Project Location:</label>
-                    <input type="text" id="projectLocation" value="Kitui, Kenya">
+                    <input type="text" id="projectLocation" value="Dabus, Ethiopia">
                 </div>
                 <div class="input-row">
                     <label for="projectSize">Project Size (ha):</label>
@@ -705,7 +705,7 @@
                 <h3>🧮 Methodological Overview</h3>
                 <p><strong>This simulation employs a cohort-based survival model with the following key principles:</strong></p>
                 <ul>
-                    <li><strong>Cohort Tracking:</strong> Each year's plantings (main planting and beat-up replacements) are tracked as separate cohorts throughout their lifecycle.</li>
+                    <li><strong>Cohort Tracking:</strong> Each year's plantings (main planting and beat-up or mortality replacements) are tracked as separate cohorts throughout their lifecycle.</li>
                     <li><strong>Cumulative Survival:</strong> Trees must survive each year's mortality rate to continue to the next year.</li>
                     <li id="beatingUpStrategy"></li> 
                     <li><strong>Beating Up Cutoff:</strong> All beating up activities stop at the user-defined calendar year. This means no new replacement seedlings are planted from the subsequent calendar year onwards, regardless of tree age.</li>
@@ -727,7 +727,7 @@
                 <p><strong>Disclaimer</strong></p>
                 <ul>
                     <p>This app is provided for estimation purposes only. While best effort was made to ensure accuracy, results may vary and should not be considered definitive. Always consult with a qualified professional for critical decisions.</p>
-                    <p>The Developer or GEA is not liable for any damages due to the use of this product. </p>
+                    <p>The Developer is not liable for any damages due to the use of this product. </p>
                 </ul><br>
 
                 <p><strong>Developer</strong></p>
@@ -902,7 +902,7 @@
 
         /**
          * Core simulation logic. Tracks cohorts and their survival over time,
-         * incorporating main plantings, beat-up replacements, and thinning operations.
+         * incorporating main plantings, beat-up or mortality replacements, and thinning operations.
          * @param {Object} plantingSchedule - Initial planting counts per year (1-5).
          * @param {Object} survivalRates - Survival rates for different age groups.
          * @param {Object} beatUpSettings - Flags for enabling Year 1 and Year 2 beat-up.
@@ -943,9 +943,9 @@
                     newPlantingsThisYear += count;
                 }
 
-                // 2. Add beat-up plantings from previous year's accumulated deaths
+                // 2. Add beat-up or mortality replacements from previous year's accumulated deaths
                 // These replacements are planted at the *start* of the currentCalendarYear.
-                // Beat-up replacements occur from Project Year 2 up to beatUpCutoffYear.
+                // Beat-up or mortality replacements occur from Project Year 2 up to beatUpCutoffYear.
                 if (currentCalendarYear > 1 && currentCalendarYear <= beatUpCutoffYear) {
                     deathsToReplaceNextYear.forEach(item => {
                         const count = item.deaths;
@@ -1265,10 +1265,10 @@
                 <div class="summary-card">
                     <h4>Trees at Year ${data.totalYears}</h4>
                     <div class="value">${finalSurvivors.toLocaleString()}</div>
-                    <p>${finalSurvivalRate}% final survival rate</p>
+                    <p>${finalSurvivalRate}% all plantings</p>
                 </div>
                 <div class="summary-card">
-                    <h4>Total Beat-up Replacements</h4>
+                    <h4>Total Beat-up or Mortality Replacements</h4>
                     <div class="value">${totalBeatUp.toLocaleString()}</div>
                     <p>Seedlings planted (until Year ${data.beatUpCutoffYear})</p>
                 </div>
@@ -1291,9 +1291,9 @@
                     <tr>
                         <th>Year</th>
                         <th>New Plantings</th>
-                        <th>Total Mortality</th>
+                        <th>Estimated Mortality</th>
                         <th>Trees Thinned</th>
-                        <th>Beat-up Replacements</th>
+                        <th>Mortality Replacements</th>
                         <th>Total Survivors (E.O.Y)</th>
                         <th>Beat-up Active</th>
                     </tr>
@@ -1530,8 +1530,9 @@
             // --- Header ---
             doc.setFontSize(18);
             doc.setTextColor(46, 125, 50);
-            doc.text("Treestimator Tool Report: Estimating Surviving Trees", 10, 20);
-    
+            doc.text("Treestimator (beta) Tool Report: Estimating Surviving Trees", 10, 20);
+            doc.setFontSize(10);
+     
             doc.setFontSize(10);
             doc.setTextColor(100, 100, 100);
             doc.text("This report is generated by the Treestimator (beta) tool on " + new Date().toLocaleDateString(), 10, 40);
@@ -1548,7 +1549,7 @@
             doc.text("Your project details and analysis results are presented below. Read the results and assumptions carefully.", 10, y += 7);
             doc.text("Thank you for using our tool. We are counting on you to nurture the seedlings so they thrive and become trees.", 10, y += 7);
             doc.text("The developer", 10, y += 7);
-
+            doc.text("For more information, visit: https://github.com/LDuguma/treestimator", 10, y += 7);
             y += 7;
             doc.setDrawColor(76, 175, 80);
             doc.line(10, y, 80, y);
@@ -1603,8 +1604,8 @@
             doc.text(`Total Main Planting: ${simulationData.totalOriginalPlanted.toLocaleString()}`, 10, y += 8);
             doc.text(`Trees at Year ${simulationData.beatUpCutoffYear}: ${simulationData.survivorsAtCutoffYear.toLocaleString()} (${((simulationData.survivorsAtCutoffYear / simulationData.totalOriginalPlanted ) * 100).toFixed(1)}% of planned main plantings)`, 10, y += 7);
             doc.text(`Trees at Year ${simulationData.beatUpCutoffYear}: ${simulationData.survivorsAtCutoffYear.toLocaleString()} (${((simulationData.survivorsAtCutoffYear / (simulationData.totalOriginalPlanted + simulationData.totalBeatUpOverall)) * 100).toFixed(1)}% of all plantings)`, 10, y += 7);
-            doc.text(`Trees at Year ${simulationData.totalYears}: ${simulationData.finalSurvivors.toLocaleString()} (${((simulationData.finalSurvivors / (simulationData.totalOriginalPlanted + simulationData.totalBeatUpOverall)) * 100).toFixed(1)}% final survival rate)`, 10, y += 7);
-            doc.text(`Total Beat-up Replacements: ${simulationData.totalBeatUpOverall.toLocaleString()} (until Year ${simulationData.beatUpCutoffYear})`, 10, y += 7);
+            doc.text(`Trees at Year ${simulationData.totalYears}: ${simulationData.finalSurvivors.toLocaleString()} (${((simulationData.finalSurvivors / (simulationData.totalOriginalPlanted + simulationData.totalBeatUpOverall)) * 100).toFixed(1)}% of all plantings)`, 10, y += 7);
+            doc.text(`Total Mortality Replacements: ${simulationData.totalBeatUpOverall.toLocaleString()} (until Year ${simulationData.beatUpCutoffYear})`, 10, y += 7);
             doc.text(`Total Trees Thinned: ${simulationData.totalTreesThinned.toLocaleString()}`, 10, y += 7);
             
             wrappedSurvivalRates.forEach((line, index) => {
@@ -1636,7 +1637,7 @@
             doc.line(10, y, 80, y);
             y += 35;
 
-            const tableColumn = ["Year", "Main Plantings", "Total Mortality", "Trees Thinned", "Beat-up Replacements", "Total Survivors (E.O.Y)", "Beat-up Active"];
+            const tableColumn = ["Year", "Main Plantings", "Estimated Mortality", "Trees Thinned", "Mortality Replacements", "Total Survivors (E.O.Y)", "Beat-up Active"];
             const tableRows = [];
 
             simulationData.yearlySimulationResults.forEach(yearData => {
@@ -1687,7 +1688,7 @@
 
             const methodologyIntro = `This simulation employs a cohort-based survival model with the following key principles:`;
             const principles = [
-                `• Cohort Tracking: Each year's plantings (main planting and beat-up replacements) are tracked as separate cohorts throughout their lifecycle.`,
+                `• Cohort Tracking: Each year's plantings (main planting and beat-up or mortality replacements) are tracked as separate cohorts throughout their lifecycle.`,
                 `• Cumulative Survival: Trees must survive each year's mortality rate to continue to the next year.`,
                 `• ${dynamicBeatingUpStrategy}`,
                 `• Beating Up Cutoff: All beating up activities stop at calendar Year ${simulationData.beatUpCutoffYear}. This means no new replacement seedlings are planted from calendar Year ${simulationData.beatUpCutoffYear + 1} onwards, regardless of tree age.`,
@@ -1820,5 +1821,4 @@
             
      </script>
 </body>
-
 </html>
